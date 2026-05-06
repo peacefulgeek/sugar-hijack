@@ -635,6 +635,8 @@ async function generateArticle(topic, index) {
     word_count: response.word_count || 1800,
     published_at: publishedAt,
     published: published,
+    status: published ? 'published' : 'gated',
+    updated_at: publishedAt,
     date_modified: publishedAt,
     faq: response.faq || [],
     author: {

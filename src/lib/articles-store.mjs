@@ -58,10 +58,16 @@ export async function getAllPublished() {
     );
     return rows;
   }
+  const now = new Date();
   const all = await readJsonStore();
-  return all.filter(a => a.status === 'published').sort(
-    (a, b) => new Date(b.published_at) - new Date(a.published_at)
-  );
+  // Auto-promote gated articles whose published_at date has arrived
+  return all
+    .filter(a => {
+      if (a.status === 'published') return true;
+      if (a.status === 'gated' && a.published_at && new Date(a.published_at) <= now) return true;
+      return false;
+    })
+    .sort((a, b) => new Date(b.published_at) - new Date(a.published_at));
 }
 
 export async function getBySlug(slug) {
@@ -83,8 +89,12 @@ export async function getByCategory(category) {
     );
     return rows;
   }
+  const now = new Date();
   const all = await readJsonStore();
-  return all.filter(a => a.status === 'published' && a.category === category);
+  return all.filter(a => {
+    const visible = a.status === 'published' || (a.status === 'gated' && a.published_at && new Date(a.published_at) <= now);
+    return visible && a.category === category;
+  });
 }
 
 export async function getRelated(slug, limit = 3) {
@@ -96,9 +106,13 @@ export async function getRelated(slug, limit = 3) {
     );
     return rows;
   }
+  const now = new Date();
   const all = await readJsonStore();
   return all
-    .filter(a => a.status === 'published' && a.slug !== slug)
+    .filter(a => {
+      const visible = a.status === 'published' || (a.status === 'gated' && a.published_at && new Date(a.published_at) <= now);
+      return visible && a.slug !== slug;
+    })
     .sort(() => Math.random() - 0.5)
     .slice(0, limit);
 }
@@ -140,8 +154,9 @@ export async function getPublishedCount() {
     const { rows } = await query(`SELECT count(*)::int as count FROM articles WHERE status='published'`);
     return rows[0].count;
   }
+  const now = new Date();
   const all = await readJsonStore();
-  return all.filter(a => a.status === 'published').length;
+  return all.filter(a => a.status === 'published' || (a.status === 'gated' && a.published_at && new Date(a.published_at) <= now)).length;
 }
 
 export async function getQueuedArticle() {
