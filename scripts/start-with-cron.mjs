@@ -35,18 +35,29 @@ if (!AUTO_GEN) {
     ]);
 
     // ─── 1. ARTICLE PUBLISHER — phase-aware, queue-first ───
-    // Phase 1 (published_count < 60): 5 fires/day, EVERY DAY
+    //
+    // Phase 1 — 5 articles/day for 40 days from SITE_LAUNCH_DATE
+    //   Fires at 07:00, 10:00, 13:00, 16:00, 19:00 UTC every day
+    //   Each fire: release 1 gated article (or generate new if queue empty)
+    //
+    // Phase 2 — 1 article/weekday (Mon–Fri) after day 40
+    //   Fires at 08:00 UTC, Monday–Friday only
+    //
+    // The generate-article module checks SITE_LAUNCH_DATE to determine phase.
+    // Set SITE_LAUNCH_DATE=YYYY-MM-DD in env vars on first deploy.
+
+    // Phase 1: 5 fires/day at spread hours, every day
     cron.schedule('0 7,10,13,16,19 * * *', async () => {
-      console.log(`[cron] generate-article (phase-1 slot) ${new Date().toISOString()}`);
-      try { await genMod.generateOrReleaseArticle({ allowedPhase: 1 }); }
-      catch (e) { console.error('[cron] generate-article phase-1 failed:', e); }
+      console.log(`[cron] article-publisher phase-1 slot ${new Date().toISOString()}`);
+      try { await genMod.generateOrReleaseArticle({ phase: 1 }); }
+      catch (e) { console.error('[cron] article-publisher phase-1 failed:', e); }
     }, { timezone: 'UTC' });
 
-    // Phase 2 (published_count >= 60): 1x/weekday at 08:00 UTC
+    // Phase 2: 1 fire/weekday at 08:00 UTC (Mon–Fri)
     cron.schedule('0 8 * * 1-5', async () => {
-      console.log(`[cron] generate-article (phase-2 slot) ${new Date().toISOString()}`);
-      try { await genMod.generateOrReleaseArticle({ allowedPhase: 2 }); }
-      catch (e) { console.error('[cron] generate-article phase-2 failed:', e); }
+      console.log(`[cron] article-publisher phase-2 slot ${new Date().toISOString()}`);
+      try { await genMod.generateOrReleaseArticle({ phase: 2 }); }
+      catch (e) { console.error('[cron] article-publisher phase-2 failed:', e); }
     }, { timezone: 'UTC' });
 
     // ─── 2. PRODUCT SPOTLIGHT — Saturday 08:00 UTC ───
@@ -77,7 +88,13 @@ if (!AUTO_GEN) {
       catch (e) { console.error('[cron] asin-health-check failed:', e); }
     }, { timezone: 'UTC' });
 
-    console.log('[start-with-cron] All cron schedules registered (AUTO_GEN_ENABLED=true)');
+    console.log('[start-with-cron] All cron schedules registered:');
+    console.log('  Phase 1 (days 1–40): 5 articles/day at 07,10,13,16,19 UTC (every day)');
+    console.log('  Phase 2 (day 41+):   1 article/weekday at 08:00 UTC (Mon–Fri)');
+    console.log('  Product spotlight:   Saturdays 08:00 UTC');
+    console.log('  Monthly refresh:     1st of month 03:00 UTC');
+    console.log('  Quarterly refresh:   Jan/Apr/Jul/Oct 1st 04:00 UTC');
+    console.log('  ASIN health check:   Sundays 05:00 UTC');
   } catch (err) {
     console.error('[start-with-cron] Cron registration failed:', err);
     // Server continues to run even if cron fails — never crash the web service

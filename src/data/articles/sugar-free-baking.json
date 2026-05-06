@@ -16,7 +16,7 @@
   "og_image": "https://images.unsplash.com/photo-1559181567-c3190ca9d715?w=1400&q=90",
   "reading_time": 9,
   "word_count": 2105,
-  "published_at": "2026-04-10T11:22:00.000Z",
+  "published_at": "2027-06-21",
   "published": true,
   "date_modified": "2026-04-10T11:22:00.000Z",
   "faq": [
@@ -47,5 +47,5 @@
     "bio": "The Oracle Lover is an intuitive educator, oracle guide, and metabolic health writer. She writes about the biology of sugar addiction, glucose science, and metabolic reset — with zero moral judgment and all the compassion. Visit theoraclelover.com for more."
   },
   "amazon_tag": "spankyspinola-20",
-  "status": "published"
+  "status": "gated"
 }
