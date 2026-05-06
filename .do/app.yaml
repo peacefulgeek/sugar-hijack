@@ -1,9 +1,9 @@
-name: the-sugar-detach
+name: sugar-hijack
 region: nyc
 services:
   - name: web
     github:
-      repo: YOUR_GITHUB_USERNAME/the-sugar-detach
+      repo: peacefulgeek/sugar-hijack
       branch: main
       deploy_on_push: true
     build_command: pnpm install --frozen-lockfile && pnpm build
@@ -23,13 +23,23 @@ services:
         value: production
       - key: PORT
         value: "3000"
+      - key: SITE_URL
+        value: https://sugarhijack.com
       - key: AUTO_GEN_ENABLED
         value: "true"
       - key: AMAZON_TAG
         value: spankyspinola-20
+      - key: BUNNY_API_KEY
+        value: bc90ca4d-ca9a-4449-91fa87d55cd9-c7b3-4a40
+      - key: BUNNY_STORAGE_ZONE
+        value: sugar-hijack
+      - key: BUNNY_STORAGE_ENDPOINT
+        value: https://ny.storage.bunnycdn.com
+      - key: BUNNY_CDN_URL
+        value: https://sugar-hijack.b-cdn.net
       # Set these in the DigitalOcean dashboard (not in this file):
       # DATABASE_URL
-      # OPENAI_API_KEY
-      # OPENAI_BASE_URL
-      # OPENAI_MODEL
+      # OPENAI_API_KEY  (DeepSeek API key)
+      # OPENAI_BASE_URL (https://api.deepseek.com)
+      # OPENAI_MODEL    (deepseek-chat)
       # GH_PAT

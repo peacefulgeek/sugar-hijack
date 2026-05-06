@@ -1,12 +1,12 @@
 import { getAllPublished } from './articles-store.mjs';
 
-const SITE_NAME = 'The Sugar Detach';
+const SITE_NAME = 'Sugar Hijack';
 const SITE_DESCRIPTION = 'The no-morality, all-biology guide to breaking sugar addiction — what glucose does to your brain, your metabolism, and your cravings, and the protocol that actually interrupts the cycle.';
 const AUTHOR_NAME = 'The Oracle Lover';
 const AUTHOR_URL = 'https://theoraclelover.com';
 
 export function buildRobotsTxt(req) {
-  const host = req?.hostname || 'thesugardetach.com';
+  const host = req?.hostname || 'sugarhijack.com';
   const protocol = req?.protocol || 'https';
   return `User-agent: *
 Allow: /
@@ -86,7 +86,7 @@ export async function buildLlmsFullTxt() {
 }
 
 export function buildCanonicalUrl(req, path = '') {
-  const host = req?.hostname || 'thesugardetach.com';
+  const host = req?.hostname || 'sugarhijack.com';
   const protocol = 'https';
   return `${protocol}://${host}${path}`;
 }

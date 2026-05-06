@@ -31,7 +31,7 @@ export async function generateProductSpotlight() {
       model: MODEL,
       messages: [{
         role: 'user',
-        content: `You are The Oracle Lover. Write a 1,200-1,500 word honest product spotlight article for thesugardetach.com.
+        content: `You are The Oracle Lover. Write a 1,200-1,500 word honest product spotlight article for sugarhijack.com.
 
 Product: ${product.name}
 ASIN: ${product.asin}

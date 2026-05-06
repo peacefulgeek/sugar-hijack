@@ -28,7 +28,7 @@ export async function refreshQuarterly() {
         model: MODEL,
         messages: [{
           role: 'user',
-          content: `You are The Oracle Lover. Perform a complete quarterly rewrite of this article for thesugardetach.com.
+          content: `You are The Oracle Lover. Perform a complete quarterly rewrite of this article for sugarhijack.com.
 
 Title: ${article.title}
 Category: ${article.category}

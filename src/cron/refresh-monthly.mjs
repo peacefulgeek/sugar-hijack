@@ -29,7 +29,7 @@ export async function refreshMonthly() {
         model: MODEL,
         messages: [{
           role: 'user',
-          content: `You are The Oracle Lover. Refresh and improve this article for thesugardetach.com.
+          content: `You are The Oracle Lover. Refresh and improve this article for sugarhijack.com.
 
 Title: ${article.title}
 Current body (first 500 chars): ${(article.body || '').slice(0, 500)}...

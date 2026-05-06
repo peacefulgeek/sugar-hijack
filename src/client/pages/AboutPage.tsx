@@ -81,7 +81,7 @@ export function AboutPage() {
           </div>
 
           <div className="about-disclaimer">
-            <strong>Health Disclaimer:</strong> thesugardetach.com is for educational purposes only.
+            <strong>Health Disclaimer:</strong> sugarhijack.com is for educational purposes only.
             Metabolic conditions including diabetes and prediabetes require medical management.
             Consult your healthcare provider before making significant dietary changes.
           </div>

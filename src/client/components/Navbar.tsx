@@ -26,9 +26,9 @@ export function Navbar() {
         aria-label="Main navigation"
       >
         <div className="navbar__inner">
-          <Link to="/" className="navbar__brand" aria-label="The Sugar Detach — Home">
+          <Link to="/" className="navbar__brand" aria-label="Sugar Hijack — Home">
             <span className="navbar__brand-icon">◆</span>
-            <span className="navbar__brand-text">The Sugar Detach</span>
+            <span className="navbar__brand-text">Sugar Hijack</span>
           </Link>
 
           {/* Desktop nav */}

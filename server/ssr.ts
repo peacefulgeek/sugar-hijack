@@ -90,7 +90,7 @@ export async function render(url: string, req: any) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   ${head}
   ${cssLinks}
-  <link rel="preconnect" href="https://the-sugar-detach.b-cdn.net" crossorigin />
+  <link rel="preconnect" href="https://sugar-hijack.b-cdn.net" crossorigin />
 </head>
 <body>
   <div id="root">${appHtml}</div>

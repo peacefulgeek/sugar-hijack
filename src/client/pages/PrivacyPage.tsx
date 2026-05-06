@@ -13,7 +13,7 @@ export function PrivacyPage() {
           <section id="affiliate">
             <h2>Amazon Affiliate Disclosure</h2>
             <p>
-              The Sugar Detach is a participant in the Amazon Services LLC Associates Program,
+              Sugar Hijack is a participant in the Amazon Services LLC Associates Program,
               an affiliate advertising program designed to provide a means for sites to earn
               advertising fees by advertising and linking to Amazon.com.
             </p>
@@ -28,7 +28,7 @@ export function PrivacyPage() {
           <section id="health">
             <h2>Health Disclaimer</h2>
             <p>
-              <strong>thesugardetach.com is for educational purposes only.</strong> The content
+              <strong>sugarhijack.com is for educational purposes only.</strong> The content
               on this site is not intended to be a substitute for professional medical advice,
               diagnosis, or treatment.
             </p>

@@ -53,6 +53,34 @@ app.use('/health', healthRouter);
 app.use('/sitemap.xml', sitemapRouter);
 app.use('/robots.txt', robotsRouter);
 app.use('/llms.txt', llmsRouter);
+
+// ─── ai.txt (AI crawler permissions) ───
+app.get('/ai.txt', (req, res) => {
+  res.type('text/plain').send(`# ai.txt for sugarhijack.com
+# AI crawler permissions — we welcome responsible AI indexing
+
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+
+# Site information
+Site: https://sugarhijack.com
+Name: Sugar Hijack
+Description: Evidence-based articles on sugar detox, blood sugar balance, and metabolic health
+Author: The Oracle Lover
+Contact: hello@sugarhijack.com
+License: https://sugarhijack.com/privacy
+
+# Content type
+Type: Educational health content
+Topics: sugar detox, blood sugar, metabolic health, insulin resistance, sugar addiction, glucose management
+
+# LLM discovery
+llms.txt: https://sugarhijack.com/llms.txt
+llms-full.txt: https://sugarhijack.com/llms-full.txt
+`);
+});
 app.use('/api/articles', articlesRouter);
 app.use('/api/assessments', assessmentsRouter);
 
@@ -71,7 +99,7 @@ app.get('*', async (req, res) => {
 
 // ─── Start ───
 app.listen(PORT, () => {
-  console.log(`[server] The Sugar Detach running on port ${PORT}`);
+  console.log(`[server] Sugar Hijack running on port ${PORT}`);
   console.log(`[server] NODE_ENV: ${process.env.NODE_ENV}`);
   console.log(`[server] AUTO_GEN_ENABLED: ${process.env.AUTO_GEN_ENABLED}`);
 });

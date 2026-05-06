@@ -100,7 +100,7 @@ export async function generateArticle({ title, category, tags, openerType, concl
   const selectedOpener = openerType || OPENER_TYPES[Math.floor(Math.random() * OPENER_TYPES.length)];
   const selectedConclusion = conclusionType || CONCLUSION_TYPES[Math.floor(Math.random() * CONCLUSION_TYPES.length)];
 
-  const prompt = `Write a complete article for The Sugar Detach website.
+  const prompt = `Write a complete article for Sugar Hijack website.
 
 TITLE: ${title}
 CATEGORY: ${category}

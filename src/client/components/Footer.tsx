@@ -10,7 +10,7 @@ export function Footer() {
           <div className="footer__brand">
             <Link to="/" className="footer__logo">
               <span className="footer__logo-icon">◆</span>
-              The Sugar Detach
+              Sugar Hijack
             </Link>
             <p className="footer__tagline">
               The no-morality, all-biology guide to breaking sugar addiction.
@@ -56,7 +56,7 @@ export function Footer() {
 
         <div className="footer__bottom">
           <p className="footer__disclaimer">
-            <strong>Health Disclaimer:</strong> thesugardetach.com is for educational purposes only.
+            <strong>Health Disclaimer:</strong> sugarhijack.com is for educational purposes only.
             Metabolic conditions including diabetes and prediabetes require medical management.
             Consult your healthcare provider before making significant dietary changes.
           </p>
@@ -64,7 +64,7 @@ export function Footer() {
             As an Amazon Associate I earn from qualifying purchases.
           </p>
           <p className="footer__copyright">
-            &copy; {year} The Sugar Detach. Written by{' '}
+            &copy; {year} Sugar Hijack. Written by{' '}
             <a href="https://theoraclelover.com" target="_blank" rel="noopener noreferrer">
               The Oracle Lover
             </a>.

@@ -6,7 +6,7 @@ export const sitemapRouter = express.Router();
 sitemapRouter.get('/', async (req, res) => {
   try {
     const articles = await getAllPublished();
-    const host = req.hostname || 'thesugardetach.com';
+    const host = req.hostname || 'sugarhijack.com';
     const base = `https://${host}`;
     const now = new Date().toISOString();
 

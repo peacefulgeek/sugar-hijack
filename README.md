@@ -90,7 +90,7 @@ Copy `.env.example` to `.env` and fill in:
 
 ```bash
 # Required for production
-SITE_URL=https://thesugardetach.com
+SITE_URL=https://sugarhijack.com
 NODE_ENV=production
 PORT=3000
 
@@ -103,7 +103,7 @@ BUNNY_STORAGE_ZONE=the-sugar-detach
 BUNNY_CDN_URL=https://the-sugar-detach.b-cdn.net
 
 # Amazon Associates
-AMAZON_AFFILIATE_TAG=thesugardetach-20
+AMAZON_AFFILIATE_TAG=spankyspinola-20
 
 # AI Writing Engine (OpenAI-compatible)
 OPENAI_API_KEY=

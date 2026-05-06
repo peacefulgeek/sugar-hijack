@@ -96,7 +96,7 @@ async function generateBody(article) {
     model: MODEL,
     messages: [{
       role: 'user',
-      content: `You are The Oracle Lover — a no-BS wellness educator with a science degree. Write a 1,800-2,200 word article for thesugardetach.com.
+      content: `You are The Oracle Lover — a no-BS wellness educator with a science degree. Write a 1,800-2,200 word article for sugarhijack.com.
 
 Title: ${article.title}
 Category: ${article.category}
