@@ -1,0 +1,35 @@
+services:
+  - type: web
+    name: sugar-hijack
+    runtime: node
+    region: oregon
+    plan: starter
+    branch: master
+    buildCommand: pnpm install --frozen-lockfile && pnpm build
+    startCommand: node scripts/start-with-cron.mjs
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: "3000"
+      - key: SITE_URL
+        value: https://sugarhijack.com
+      - key: SITE_LAUNCH_DATE
+        value: "2025-05-06"
+      - key: AUTO_GEN_ENABLED
+        value: "true"
+      - key: AMAZON_TAG
+        value: spankyspinola-20
+      - key: BUNNY_API_KEY
+        value: bc90ca4d-ca9a-4449-91fa87d55cd9-c7b3-4a40
+      - key: BUNNY_STORAGE_ZONE
+        value: sugar-hijack
+      - key: BUNNY_STORAGE_ENDPOINT
+        value: https://ny.storage.bunnycdn.com
+      - key: BUNNY_CDN_URL
+        value: https://sugar-hijack.b-cdn.net
+      # Set these in the Render dashboard (sensitive — do not commit):
+      # OPENAI_API_KEY   — your OpenAI/DeepSeek API key
+      # OPENAI_BASE_URL  — https://api.openai.com/v1  (or https://api.deepseek.com for DeepSeek)
+      # OPENAI_MODEL     — gpt-4.1-mini  (or deepseek-chat)

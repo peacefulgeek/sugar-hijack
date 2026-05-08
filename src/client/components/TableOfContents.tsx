@@ -22,6 +22,8 @@ export function TableOfContents({ content }: TableOfContentsProps) {
     while ((match = headingRegex.exec(content)) !== null) {
       const level = match[1].length;
       const text = match[2].replace(/\*\*/g, '').trim();
+      // Skip AUTHOR_BIO_CARD placeholder and empty headings
+      if (text === '[AUTHOR_BIO_CARD]' || text === '' || text.startsWith('[')) continue;
       const id = text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
       parsed.push({ id, text, level });
     }

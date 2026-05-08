@@ -2,7 +2,7 @@
 
 > The no-morality, all-biology guide to breaking sugar addiction.
 
-A full-stack SSR content site built on **React 18 + Express + Vite**, designed for deployment on **DigitalOcean App Platform**.
+A full-stack SSR content site built on **React 18 + Express + Vite**, designed for deployment on **Render**.
 
 ---
 
@@ -20,7 +20,7 @@ A full-stack SSR content site built on **React 18 + Express + Vite**, designed f
 | Affiliate | Amazon Associates (tag via `AMAZON_AFFILIATE_TAG`) |
 | AI Writing | OpenAI-compatible API (DeepSeek / GPT-4.1) |
 | Scheduling | `node-cron` (daily article gen, monthly refresh, ASIN health) |
-| Deployment | DigitalOcean App Platform (`.do/app.yaml`) |
+| Deployment | Render (`render.yaml`) |
 
 ---
 
@@ -28,7 +28,7 @@ A full-stack SSR content site built on **React 18 + Express + Vite**, designed f
 
 ```
 the-sugar-detach/
-├── .do/app.yaml              # DigitalOcean App Platform config
+├── render.yaml              # Render config
 ├── server/
 │   ├── index.ts              # Express server entry
 │   ├── ssr.ts                # SSR renderer (reads Vite manifest)
@@ -134,11 +134,11 @@ Articles are stored as individual JSON files in `src/data/articles/`. Each artic
 
 ---
 
-## Deploying to DigitalOcean
+## Deploying to Render
 
 1. Push this repo to GitHub
-2. In DigitalOcean App Platform → **Create App** → connect your GitHub repo
-3. The `.do/app.yaml` config will be detected automatically
+2. In Render → **Create App** → connect your GitHub repo
+3. The `render.yaml` config will be detected automatically
 4. Set environment variables in the App Platform dashboard
 5. Deploy
 
@@ -186,3 +186,11 @@ Update `SITE_URL` in your environment variables. The server automatically:
 ## Author
 
 Written by **The Oracle Lover** — [theoraclelover.com](https://theoraclelover.com)
+
+
+## Deploy to Render
+1. Go to **[render.com](https://render.com)** → New → Web Service
+2. Connect `peacefulgeek/sugar-hijack` from GitHub
+3. Render auto-detects `render.yaml` — all env vars pre-configured
+4. Add `OPENAI_API_KEY` and `OPENAI_BASE_URL` in the Render dashboard (sensitive)
+5. Point `sugarhijack.com` DNS → your Render service URL (Settings → Custom Domains)

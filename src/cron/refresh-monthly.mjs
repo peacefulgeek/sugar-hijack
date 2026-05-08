@@ -9,7 +9,7 @@ import { getAllPublished, upsertArticle } from '../lib/articles-store.mjs';
 
 const client = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
-  baseURL: process.env.OPENAI_BASE_URL || 'https://openai.manus.space/v1',
+  baseURL: process.env.OPENAI_BASE_URL || 'https://api.openai.com/v1',
 });
 const MODEL = process.env.OPENAI_MODEL || 'gpt-4.1-mini';
 

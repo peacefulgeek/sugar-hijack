@@ -98,7 +98,7 @@ export function ArticlePage({ ssrData }: ArticlePageProps) {
           <div className="article-hero__byline">
             <AuthorByline
               readingTime={article.reading_time}
-              publishedAt={article.published_at}
+              publishedAt={article.created_at || article.published_at}
               compact
             />
           </div>
@@ -341,6 +341,7 @@ function extractSections(body: string) {
   let match;
   while ((match = headingRegex.exec(body)) !== null) {
     const text = match[1].replace(/\*\*/g, '').trim();
+    if (text === '[AUTHOR_BIO_CARD]' || text === '' || text.startsWith('[')) continue;
     const id = text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
     sections.push({ id, label: text });
   }
