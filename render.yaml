@@ -5,7 +5,7 @@ services:
     region: oregon
     plan: starter
     branch: master
-    buildCommand: pnpm install --frozen-lockfile && pnpm build
+    buildCommand: npm install -g pnpm@9.15.0 && pnpm install --frozen-lockfile && pnpm build
     startCommand: node scripts/start-with-cron.mjs
     healthCheckPath: /health
     envVars:
